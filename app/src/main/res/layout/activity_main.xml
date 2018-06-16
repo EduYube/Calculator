@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.eyubero.calculator.MainActivity"
-    android:background="@color/colorPrimaryDark"
     >
 
 
@@ -21,8 +20,7 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp">
+        android:layout_marginTop="15dp">
 
         <TableRow
             android:layout_width="match_parent"
@@ -51,7 +49,6 @@
                 android:id="@+id/divider"
                 android:layout_width="wrap_content"
                 android:layout_height="75dp"
-                android:background="@color/colorAccent"
                 android:text="/" />
         </TableRow>
         <TableRow
@@ -81,7 +78,6 @@
                 android:id="@+id/multiplicate"
                 android:layout_width="wrap_content"
                 android:layout_height="75dp"
-                android:background="@color/colorAccent"
                 android:text="*" />
         </TableRow>
 
@@ -111,7 +107,6 @@
                 android:id="@+id/resta"
                 android:layout_width="wrap_content"
                 android:layout_height="75dp"
-                android:background="@color/colorAccent"
                 android:text="-" />
         </TableRow>
 
@@ -141,7 +136,6 @@
                 android:id="@+id/sume"
                 android:layout_width="wrap_content"
                 android:layout_height="75dp"
-                android:background="@color/colorAccent"
                 android:text="+" />
         </TableRow>
 
@@ -150,8 +144,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_marginStart="15dp">
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/zero"
@@ -169,7 +162,6 @@
             android:id="@+id/equal"
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:background="@color/colorAccent"
             android:text="=" />
     </LinearLayout>
 
