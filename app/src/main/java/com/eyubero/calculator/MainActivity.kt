@@ -57,4 +57,12 @@ class MainActivity : AppCompatActivity() {
             valueCell.text = valueCell.text.toString() + value
     }
 
+    fun clear(view: View) {
+        val bt = view as Button
+
+        if (bt.id == clear.id) {
+            value = "0"
+        }
+        valueCell.text = value
+    }
 }
