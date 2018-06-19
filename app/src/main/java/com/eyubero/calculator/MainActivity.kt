@@ -65,4 +65,14 @@ class MainActivity : AppCompatActivity() {
         }
         valueCell.text = value
     }
+
+    fun plusMinus(view:View){
+
+        val bt = view as Button
+
+        if (bt.id == plusMinus.id) {
+            value = (valueCell.text.toString().toInt() * -1).toString()
+        }
+        valueCell.text = value
+    }
 }

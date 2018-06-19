@@ -37,6 +37,7 @@
                 android:id="@+id/plusMinus"
                 android:layout_width="wrap_content"
                 android:layout_height="75dp"
+                android:onClick="plusMinus"
                 android:text="+/-" />
 
             <Button
