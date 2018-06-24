@@ -9,6 +9,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     var value: String = ""
+    var result = false
+    var op = -1
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,11 +65,13 @@ class MainActivity : AppCompatActivity() {
 
         if (bt.id == clear.id) {
             value = "0"
+            firstCell.text = ""
+            result = false
         }
         valueCell.text = value
     }
 
-    fun plusMinus(view:View){
+    fun plusMinus(view: View) {
 
         val bt = view as Button
 
@@ -74,5 +79,101 @@ class MainActivity : AppCompatActivity() {
             value = (valueCell.text.toString().toInt() * -1).toString()
         }
         valueCell.text = value
+    }
+
+    fun mathFunctions(view: View) {
+        val math = view as Button
+
+        var num = valueCell.text.toString()
+
+        if(!result) {
+            when (math.id){
+                divider.id -> {
+                    firstCell.text = num + " /"
+                    valueCell.text = "0"
+                    result = true
+                    op = 1
+                }
+                multiplicate.id -> {
+                    firstCell.text = num + " *"
+                    valueCell.text = "0"
+                    result = true
+                    op = 2
+                }
+                resta.id -> {
+                    firstCell.text = num + " -"
+                    valueCell.text = "0"
+                    result = true
+                    op = 3
+                }
+                sume.id -> {
+                    firstCell.text = num + " +"
+                    valueCell.text = "0"
+                    result = true
+                    op = 4
+                }
+            }
+        } else {
+            var x:String = firstCell.text.toString().substringBefore(" ")
+            when (math.id){
+                divider.id -> {
+                    div(x.toInt(),valueCell.text.toString().toInt())
+                    result = false
+                }
+                multiplicate.id -> {
+                    mult(x.toInt(),valueCell.text.toString().toInt())
+                    result = false
+                }
+                resta.id -> {
+                    rest(x.toInt(),valueCell.text.toString().toInt())
+                    result = false
+                }
+                sume.id -> {
+                    sum(x.toInt(),valueCell.text.toString().toInt())
+                    result = false
+                }
+                equal.id -> {
+                    result = false
+                    when (op){
+                        1 -> {
+                            div(x.toInt(),valueCell.text.toString().toInt())
+                        }
+                        2 -> {
+                            mult(x.toInt(),valueCell.text.toString().toInt())
+                        }
+                        3 -> {
+                            rest(x.toInt(),valueCell.text.toString().toInt())
+                        }
+                        4 -> {
+                            sum(x.toInt(),valueCell.text.toString().toInt())
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun div(x: Int, y: Int) {
+        firstCell.text = ""
+        if(y != 0){
+            valueCell.text = (x/y).toString()
+        } else {
+            valueCell.text = "Math error"
+        }
+    }
+
+    private fun mult(x: Int, y: Int) {
+        firstCell.text = ""
+        valueCell.text = (x*y).toString()
+    }
+
+    private fun rest(x: Int, y: Int) {
+        firstCell.text = ""
+        valueCell.text = (x-y).toString()
+    }
+
+    private fun sum(x: Int, y: Int) {
+        firstCell.text = ""
+        valueCell.text = (x+y).toString()
     }
 }
