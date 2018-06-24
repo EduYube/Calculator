@@ -88,6 +88,12 @@ class MainActivity : AppCompatActivity() {
 
         if(!result) {
             when (math.id){
+                percent.id -> {
+                    firstCell.text = num + " %"
+                    valueCell.text = "0"
+                    result = true
+                    op = 0
+                }
                 divider.id -> {
                     firstCell.text = num + " /"
                     valueCell.text = "0"
@@ -116,6 +122,10 @@ class MainActivity : AppCompatActivity() {
         } else {
             var x:String = firstCell.text.toString().substringBefore(" ")
             when (math.id){
+                percent.id -> {
+                    per(x.toInt(),valueCell.text.toString().toInt())
+                    result = false
+                }
                 divider.id -> {
                     div(x.toInt(),valueCell.text.toString().toInt())
                     result = false
@@ -135,6 +145,9 @@ class MainActivity : AppCompatActivity() {
                 equal.id -> {
                     result = false
                     when (op){
+                        0 -> {
+                            per(x.toInt(),valueCell.text.toString().toInt())
+                        }
                         1 -> {
                             div(x.toInt(),valueCell.text.toString().toInt())
                         }
@@ -151,6 +164,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun per(x: Int, y: Int) {
+        firstCell.text = ""
+        valueCell.text = (x*(y/100)).toString()
     }
 
     private fun div(x: Int, y: Int) {
